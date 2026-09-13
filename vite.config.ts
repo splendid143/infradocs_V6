@@ -5,7 +5,7 @@ import { fileURLToPath } from 'url'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
-export default defineConfig({
+export default defineConfig(({ command, mode }) => ({
   plugins: [react()],
   resolve: {
     alias: {
@@ -16,4 +16,17 @@ export default defineConfig({
     port: 3000,
     open: true,
   },
-})
+  build: {
+    outDir: 'dist',
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'react-router-dom'],
+          supabase: ['@supabase/supabase-js'],
+          query: ['@tanstack/react-query'],
+        },
+        chunkSizeWarningLimit: 500,
+      },
+    },
+  },
+}))
