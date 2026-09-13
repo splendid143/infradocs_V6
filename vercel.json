@@ -1,19 +1,9 @@
 {
   "version": 2,
-  "framework": "vite",
-  "builds": [
+  "rewrites": [
     {
-      "src": "package.json",
-      "use": "@vercel/vite-builder",
-      "config": {
-        "viteConfig": "vite.config.ts"
-      }
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/dist/index.html"
+      "source": "/(.*)",
+      "destination": "/dist/index.html"
     }
   ]
 }
