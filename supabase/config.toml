@@ -1,0 +1,49 @@
+# Supabase configuration for INFO DOCS
+# This project uses a dedicated Supabase project - not shared with any other application
+
+[project]
+id = "info-docs"
+
+[api]
+port = 54321
+schemas = ["public"]
+extra_search_path = ["public", "extensions"]
+
+[db]
+port = 54322
+shadow_port = 54320
+major_version = 15
+
+[studio]
+port = 54323
+api_url = "http://localhost:54321"
+
+[inbucket]
+port = 54324
+smtp_port = 54325
+pop3_port = 54326
+
+[storage]
+port = 54327
+file_size_limit = "50MiB"
+
+[auth]
+site_url = "http://localhost:3000"
+additional_redirect_urls = ["http://localhost:3000/**"]
+jwt_expiry = 3600
+enable_signup = true
+enable_email_confirmations = true
+enable_phone_confirmations = false
+enable_anonymous_sign_ins = false
+min_password_length = 8
+password_min_entropy = 60
+max_frequency_per_minute = 10
+rate_limit_email_sent = 2
+rate_limit_sms_sent = 2
+rate_limit_verify = 10
+rate_limit_token_refresh = 10
+rate_limit_password_recovery = 2
+email_otp_expiry = 600
+sms_otp_expiry = 600
+external_phone_providers = []
+external_email_providers = []
